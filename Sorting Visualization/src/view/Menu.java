@@ -51,8 +51,6 @@ public class Menu extends JPanel {
 			else if (e.getSource() == randomize) {
 				visual.randomizeArray();
 			}
-			start.setEnabled(true);
-			randomize.setEnabled(true);
 		}
 	};
 	
