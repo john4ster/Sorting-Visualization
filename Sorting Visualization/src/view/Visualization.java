@@ -24,18 +24,20 @@ public class Visualization extends JPanel {
 	int[] data; //Array to sort
 	BubbleSort bubbleSort;
 	MergeSort mergeSort;
+	QuickSort quickSort;
 	
 	public Visualization(int width, int height) {
 		//Initialize variables
 		this.windowWidth = width;
 		this.windowHeight = height;
-		this.numElements = 50;
+		this.numElements = 100;
 		//Create and randomize the array
 		data = createArray();
 		randomizeArray();
-		//Pass the array into the algorithms
+		//Create algorithm instances
 		bubbleSort = new BubbleSort(this, data);
 		mergeSort = new MergeSort(this, data);
+		quickSort = new QuickSort(this, data);
 		//Set up the menu to select and start the algorithms
 		menu = new Menu(this);
 		this.add(menu);
@@ -77,12 +79,13 @@ public class Visualization extends JPanel {
 	//Decide which algorithm to run based on the combo box
 	public SortAlgorithm getSelectedAlgorithm() {
 		if (menu.getSelectedOption().equals("Bubble Sort")) {
-			System.out.println("bubble");
 			return bubbleSort;
 		}
-		else {
-			System.out.println("merge");
+		else if (menu.getSelectedOption().equals("Merge Sort")){
 			return mergeSort;
+		}
+		else {
+			return quickSort;
 		}
 	}
 	
@@ -95,7 +98,7 @@ public class Visualization extends JPanel {
 		//Draw the visualization based on the array
 		g.setColor(Color.WHITE);
 		for (int i = 0; i < data.length; i++) {
-			int barWidth = 20;
+			int barWidth = 10;
 			int barHeight = data[i] * 5;
 			int x = (barWidth * i);
 			int y = windowHeight - barHeight;
