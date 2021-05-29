@@ -23,7 +23,8 @@ public class Menu extends JPanel {
 		//Initialize visual to communicate with the visualization
 		this.visual = visual;
 		//Initialize and add the combo box, start button, and randomize button
-		String [] algorithms = {"Bubble Sort", "Merge Sort", "Quick Sort"};
+		String [] algorithms = {"Bubble Sort", "Merge Sort", "Quick Sort", 
+								"Selection Sort", "Insertion Sort"};
 		selectAlgorithm = new JComboBox(algorithms);
 		this.add(selectAlgorithm);
 		start = new JButton("Start");

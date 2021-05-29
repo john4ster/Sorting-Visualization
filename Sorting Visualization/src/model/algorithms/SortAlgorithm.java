@@ -22,6 +22,12 @@ public abstract class SortAlgorithm {
 		data[firstIndex] = b;
 		data[secondIndex] = a;
 		
+		//Update the visualization
+		updateVisual();
+	};
+	
+	//Pauses this thread so the visualization can catch up
+	public void updateVisual() {
 		//Make this thread sleep so the user can see each swap in the visualization
 		try {
 			Thread.sleep(50);
@@ -30,8 +36,7 @@ public abstract class SortAlgorithm {
 			e.printStackTrace();
 		}
 		
-		//Update the visualization
 		visual.repaint();
-	};
+	}
 	
 }

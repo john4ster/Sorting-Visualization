@@ -14,6 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 import javax.swing.SwingWorker;
 
+/* This class is the visualization of the sorting algorithms. The visualization shows the 
+ * array as a list of bars, with taller bars being larger numbers. So, once an array is
+ * sorted, it will look like a staircase shape, from least to greatest.
+ */
+
 public class Visualization extends JPanel {
 
 	int windowWidth;
@@ -25,19 +30,19 @@ public class Visualization extends JPanel {
 	BubbleSort bubbleSort;
 	MergeSort mergeSort;
 	QuickSort quickSort;
+	SelectionSort selectionSort;
+	InsertionSort insertionSort;
 	
 	public Visualization(int width, int height) {
 		//Initialize variables
 		this.windowWidth = width;
 		this.windowHeight = height;
-		this.numElements = 100;
+		numElements = 100;
 		//Create and randomize the array
 		data = createArray();
 		randomizeArray();
 		//Create algorithm instances
-		bubbleSort = new BubbleSort(this, data);
-		mergeSort = new MergeSort(this, data);
-		quickSort = new QuickSort(this, data);
+		initializeAlgorithms();
 		//Set up the menu to select and start the algorithms
 		menu = new Menu(this);
 		this.add(menu);
@@ -76,6 +81,15 @@ public class Visualization extends JPanel {
 		repaint();
 	}
 	
+	//Initialize the algorithm instances
+	public void initializeAlgorithms() {
+		bubbleSort = new BubbleSort(this, data);
+		mergeSort = new MergeSort(this, data);
+		quickSort = new QuickSort(this, data);
+		selectionSort = new SelectionSort(this, data);
+		insertionSort = new InsertionSort(this, data);
+	}
+	
 	//Decide which algorithm to run based on the combo box
 	public SortAlgorithm getSelectedAlgorithm() {
 		if (menu.getSelectedOption().equals("Bubble Sort")) {
@@ -84,8 +98,14 @@ public class Visualization extends JPanel {
 		else if (menu.getSelectedOption().equals("Merge Sort")){
 			return mergeSort;
 		}
-		else {
+		else if (menu.getSelectedOption().equals("Quick Sort")) {
 			return quickSort;
+		}
+		else if (menu.getSelectedOption().equals("Selection Sort")){
+			return selectionSort;
+		}
+		else {
+			return insertionSort;
 		}
 	}
 	
