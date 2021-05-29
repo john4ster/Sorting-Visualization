@@ -71,7 +71,7 @@ public class Visualization extends JPanel {
 		Random random = new Random();
 		for (int i = 0; i < numElements; i++) {
 			int randomIndex = random.nextInt(numElements);
-			data[randomIndex] = data[i];
+			data[randomIndex] = i;
 		}
 		repaint();
 	}

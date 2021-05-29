@@ -5,7 +5,7 @@ import view.Visualization;
 /* Quick Sort is a divide and conquer algorithm that picks an element as a pivot.
  * It uses this pivot and then puts smaller elements than the pivot on the left, and
  * larger elements on the right. It continues to do this recursively until the 
- * algorithm is sorted
+ * algorithm is sorted.
  */ 
 
 public class QuickSort extends SortAlgorithm {
@@ -29,7 +29,7 @@ public class QuickSort extends SortAlgorithm {
 		int i = low - 1;
 		
 		for (int j = low; j<= high - 1; j++) {
-			if (array[j] < pivot) {
+			if (array[j] <= pivot) {
 				i++;
 				swap(array[i], array[j], i, j);
 			}
